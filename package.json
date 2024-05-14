@@ -1,6 +1,5 @@
 {
   "name": "movie-flix",
-  "homepage": "https://bhamini1112.github.io/movie-flix",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
