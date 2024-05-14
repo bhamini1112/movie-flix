@@ -8,7 +8,12 @@ const Filter = ({
   setOlderYear,
 }) => {
   const handleSelect = (id) => {
-    setFilteredGenres([...filteredGenres, id]);
+    if (filteredGenres.includes(id)) {
+      setFilteredGenres(filteredGenres.filter((genreId) => genreId !== id));
+    } else {
+      setFilteredGenres([...filteredGenres, id]);
+    }
+
     setMovieList([]);
     setOlderMovisList([]);
     setActiveYear(2012);

@@ -186,6 +186,7 @@
   color: white;
   height: 20px;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .no-movies {
