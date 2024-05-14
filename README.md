@@ -47,4 +47,6 @@ The project will open on localhost:3000
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](src/utils/Screenshot%202024-05-14%20153104.png)
+
+![App Screenshot](src/utils/Screenshot%202024-05-14%20153131.png)
