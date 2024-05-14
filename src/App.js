@@ -10,7 +10,7 @@ const appRouter = createBrowserRouter([
     element: <HomePage />,
   },
   {
-    path: "movies/:movieId",
+    path: "/movies/:movieId",
     element: <MovieDetails />,
   },
 ]);
