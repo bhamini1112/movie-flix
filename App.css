@@ -1,0 +1,262 @@
+.header {
+  background-color: rgb(42, 42, 42);
+  margin: 0;
+  padding: 0px 16px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-filter {
+  margin: 8px 24px;
+}
+
+.search-input {
+  background-color: rgb(83, 82, 82);
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  margin: 8px;
+  color: white;
+}
+
+.search-btn {
+  background-color: rgb(205, 5, 5);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.app-title {
+  color: rgb(205, 5, 5);
+  font-weight: 300;
+  margin: 8px;
+}
+
+.filter {
+  position: fixed;
+  top: 0;
+  margin-top: 60px;
+  background-color: rgb(42, 42, 42);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.content {
+  background-color: black;
+}
+
+.year,
+.shimmer-year {
+  color: rgb(205, 5, 5);
+  background-color: black;
+  margin-bottom: 0px;
+  padding: 64px 32px 8px 32px;
+  font-weight: 400;
+  font-size: 50px;
+}
+
+.movies-container,
+.shimmer-movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: black;
+  padding-top: 16px;
+  margin: 0px 16px;
+}
+
+.movie-link {
+  text-decoration: none;
+  display: flex;
+}
+
+.movie-card,
+.shimmer-movie-card {
+  display: flex;
+  width: 45%;
+  height: 320px;
+  margin: 8px 16px;
+  padding: 8px;
+  background-color: rgb(42, 42, 42);
+  border-radius: 16px;
+  box-sizing: content-box;
+}
+
+@media screen and (max-width: 1200px) {
+  .movie-card,
+  .shimmer-movie-card {
+    display: flex;
+    width: 100%;
+    height: 320px;
+    margin: 8px 16px;
+    padding: 8px;
+    background-color: rgb(42, 42, 42);
+    border-radius: 16px;
+    box-sizing: content-box;
+  }
+}
+
+.movie-img {
+  width: 200px;
+  margin: 8px;
+}
+
+.movie-title {
+  color: rgb(205, 5, 5);
+  font-size: 20px;
+}
+
+.movie-title:hover {
+  color: rgb(244, 9, 9);
+  text-shadow: 0px 0px 30px rgb(247, 134, 134);
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.movie-description {
+  height: 60%;
+  padding: 4px;
+  width: 96%;
+  color: white;
+  overflow-y: scroll;
+}
+
+.movie-description::-webkit-scrollbar {
+  width: 4px;
+}
+
+.movie-description::-webkit-scrollbar-thumb {
+  background: rgb(205, 5, 5);
+  border-radius: 10px;
+}
+
+.genres-list {
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  scrollbar-width: none;
+  width: 320px;
+  white-space: nowrap;
+}
+
+.genre-tag {
+  background-color: rgb(205, 5, 5);
+  color: white;
+  border-radius: 8px;
+  padding: 4px;
+  margin: 8px;
+}
+
+.inverse-scroll {
+  height: 500px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  scrollbar-color: none;
+  scrollbar-width: none;
+}
+
+.genre-unselected {
+  border-radius: 4px;
+  padding: 4px;
+  margin: 8px;
+  background-color: rgb(83, 82, 82);
+  color: white;
+  height: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.genre-selected {
+  border-radius: 4px;
+  padding: 4px;
+  margin: 8px;
+  background-color: rgb(205, 5, 5);
+  color: white;
+  height: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.no-movies {
+  color: white;
+  margin-left: 48px;
+  margin-bottom: 0px;
+  height: 320px;
+}
+
+.movie-content {
+  background-color: rgb(42, 42, 42);
+  height: 600px;
+  display: flex;
+}
+
+.movie-details {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-content-img {
+  height: 80%;
+  margin: 40px;
+  border-radius: 16px;
+  border: 4px solid rgb(205, 5, 5);
+}
+
+.movie-content-title {
+  color: rgb(205, 5, 5);
+  font-size: 48px;
+  margin-top: 40px;
+}
+
+.movie-content-description {
+  margin: 16px 0px;
+  padding: 4px;
+  width: fit-content;
+  color: white;
+}
+
+.cast {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.cast-card {
+  padding: 8px;
+  margin: 4px;
+  text-align: center;
+}
+
+.cast-img {
+  width: 120px;
+  height: 160px;
+  border-radius: 8px;
+  border: 3px solid rgb(205, 5, 5);
+}
+
+.cast-character {
+  color: white;
+  width: 120px;
+  margin: 2px 0;
+}
+
+.cast-name {
+  color: rgb(170, 169, 169);
+  width: 120px;
+  margin: 0;
+}
