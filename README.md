@@ -1,38 +1,50 @@
-# Steps to run the App
+# MovieFlix
 
-- Open your web browser and navigate to the GitHub repository page "https://github.com/bhamini1112/movie-flix" for the React app.
-  -On the right-hand side of the page, click on the “Code” button.
-- In the drop-down menu, select HTTPS to clone the repository.
-- Click the “Copy” button to copy the URL of the repository to your clipboard.
+This application consists of movie information and displays year-wise list of movies from The Movie DataBase (TMDb) API.
 
-- Now Open the terminal or command prompt and navigate to the directory where you want to store the React project. Then, run the following commands to clone the repository
+## Requirements
 
-- git clone https://github.com/bhamini1112/movie-flix.git
-- cd movie-flix
-- npm i
-- npm audit fix
-- npm start
+- By default, when a user lands on the page, display a list of movies of the year 2012.
+- Should load a list of 20 movies for each year sorted in descending order of popularity.
+- Each Movie Card should show the movie title, image, genre and a short description related to the movie.
+- Implement smooth scrolling behavior to load more movies as the user scrolls in any direction
+- Provide a filter UI that allows users to filter movies by genre.
+- When a user selects one or more genres, the list should only display movies of the selected genres.
 
-# Requirements for MovieFlix App
+### Bonus Requirements
 
-- Movie Cards with movie image, title, description (Done)
-- Add Genre tag for each movies (Done)
-- Call Movies API with the year parameter (Done)
-- Scroll functionality - Downwards for newer years (Done)
-- Scroll functionality - Upwards for older years (Done)
-- Add Genre filter - Single (Done)
-- Add Genre filte - Multiple (Done)
-- Add a Search box for movies with title (Infinite scrolling) (Done)
-- Add Shimmer UI (Done)
-- Add Cast details in the movie card (Done)
-- Shimmer UI for Cast details
+- Ensuring smooth scrolling even when more and more movies are loaded in the DOM.
+- Implement a search bar which searches for the movie based on the search string and displays an infinite loading list of movies which matches the search.
+- When clicked on the movie title, go to the movie details page which shows more information about the movie - Title, Description, Movie Image and Cast details.
 
-# Bug Fixes
+## Steps to run the application:
 
-- TMDB API should run every time the project starts running
-- Infinte scroll not working properly (Done)
-- Show 2012 page when loaded (Done)
-- Show 2012 page when Search done or filter selected (Done)
-- Older movies not loading properly with filters (Done)
-- CSS Improvement (Done)
-- Title overflow ((Done))
+Note: Make sure to have git and npm installed on your system.
+
+Open the terminal or command prompt and navigate to the directory where you want to store the React project. Then, run the following commands one by one in the same order to clone the repository:
+
+```bash
+  git clone https://github.com/bhamini1112/movie-flix.git
+```
+
+```bash
+  cd movie-flix
+```
+
+```bash
+  npm i
+```
+
+```bash
+  npm audit fix
+```
+
+```bash
+  npm start
+```
+
+The project will open on localhost:3000
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
