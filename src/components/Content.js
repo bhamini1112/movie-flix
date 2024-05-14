@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import axios from "axios";
 
 import MoviesContainer from "./MoviesContainer";
 import ShimmerUI from "./ShimmerUI";
@@ -18,60 +19,17 @@ const Content = ({
   const [movieList, setMovieList] = useState([]);
   const [olderMovieList, setOlderMovisList] = useState([]);
 
-  const fetchNewMovies = async () => {
-    try {
-      const data = await fetch(
+  const fetchNewMovies = () => {
+    axios
+      .get(
         "https://api.themoviedb.org/3/discover/movie?api_key=2dca580c2a14b55200e784d157207b4d&sort_by=popularity.desc&primary_release_year=" +
           activeYear.toString() +
           "&page=1&vote_count.gte=100"
-      );
-      const json = await data.json();
-
-      const newMovies = {
-        year: activeYear,
-        results: json.results
-          ?.map((movie, index) => {
-            let isGenre = filteredGenres.length === 0 ? true : false;
-            let showCard = true;
-
-            for (let i = 0; i < filteredGenres.length; i++) {
-              if (movie.genre_ids.includes(filteredGenres[i])) {
-                isGenre = true;
-              }
-            }
-
-            if (searchText.length > 0) {
-              if (movie.original_title.includes(searchText)) showCard = true;
-              else showCard = false;
-            }
-
-            if (isGenre && showCard) return movie;
-          })
-          .filter((movie) => movie),
-      };
-
-      if (activeYear === 2012) setMovieList([newMovies]);
-      else setMovieList([...movieList, newMovies]);
-
-      setActiveYear(activeYear + 1);
-    } catch (error) {
-      setError(error);
-    }
-  };
-
-  const fetchOldMovies = async () => {
-    try {
-      const data = await fetch(
-        "https://api.themoviedb.org/3/discover/movie?api_key=2dca580c2a14b55200e784d157207b4d&sort_by=popularity.desc&primary_release_year=" +
-          olderYear.toString() +
-          "&page=1&vote_count.gte=100"
-      );
-      const json = await data.json();
-
-      const newMovies = {
-        year: olderYear,
-        results:
-          json.results
+      )
+      .then((data) => {
+        const newMovies = {
+          year: activeYear,
+          results: data.data.results
             ?.map((movie, index) => {
               let isGenre = filteredGenres.length === 0 ? true : false;
               let showCard = true;
@@ -89,16 +47,56 @@ const Content = ({
 
               if (isGenre && showCard) return movie;
             })
-            .filter((movie) => movie) || [],
-      };
+            .filter((movie) => movie),
+        };
 
-      if (olderYear === 2011) setOlderMovisList([newMovies]);
-      else setOlderMovisList([...olderMovieList, newMovies]);
+        if (activeYear === 2012) setMovieList([newMovies]);
+        else setMovieList([...movieList, newMovies]);
 
-      setOlderYear(olderYear - 1);
-    } catch (error) {
-      setError(error);
-    }
+        setActiveYear(activeYear + 1);
+      })
+      .catch((error) => setError);
+  };
+
+  const fetchOldMovies = () => {
+    axios
+      .get(
+        "https://api.themoviedb.org/3/discover/movie?api_key=2dca580c2a14b55200e784d157207b4d&sort_by=popularity.desc&primary_release_year=" +
+          olderYear.toString() +
+          "&page=1&vote_count.gte=100"
+      )
+      .then((data) => {
+        const newMovies = {
+          year: olderYear,
+          results:
+            data.data.results
+              ?.map((movie, index) => {
+                let isGenre = filteredGenres.length === 0 ? true : false;
+                let showCard = true;
+
+                for (let i = 0; i < filteredGenres.length; i++) {
+                  if (movie.genre_ids.includes(filteredGenres[i])) {
+                    isGenre = true;
+                  }
+                }
+
+                if (searchText.length > 0) {
+                  if (movie.original_title.includes(searchText))
+                    showCard = true;
+                  else showCard = false;
+                }
+
+                if (isGenre && showCard) return movie;
+              })
+              .filter((movie) => movie) || [],
+        };
+
+        if (olderYear === 2011) setOlderMovisList([newMovies]);
+        else setOlderMovisList([...olderMovieList, newMovies]);
+
+        setOlderYear(olderYear - 1);
+      })
+      .catch((error) => setError(error));
   };
 
   useEffect(() => {

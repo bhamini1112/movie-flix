@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 import { IMG_URL } from "../utils/constants";
 
@@ -8,24 +9,24 @@ const MovieDetails = () => {
   const [castList, setCastList] = useState([]);
   const [movieDetails, setMoviesDetails] = useState({});
 
-  const fetchMovieCast = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/movie/" +
-        movieId +
-        "/credits?api_key=2dca580c2a14b55200e784d157207b4d"
-    );
-    const json = await data.json();
-    setCastList(json.cast);
+  const fetchMovieCast = () => {
+    axios
+      .get(
+        "https://api.themoviedb.org/3/movie/" +
+          movieId +
+          "/credits?api_key=2dca580c2a14b55200e784d157207b4d"
+      )
+      .then((data) => setCastList(data.data.cast));
   };
 
-  const fetchMovieData = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/movie/" +
-        movieId +
-        "?api_key=2dca580c2a14b55200e784d157207b4d"
-    );
-    const json = await data.json();
-    setMoviesDetails(json);
+  const fetchMovieData = () => {
+    axios
+      .get(
+        "https://api.themoviedb.org/3/movie/" +
+          movieId +
+          "?api_key=2dca580c2a14b55200e784d157207b4d"
+      )
+      .then((data) => setMoviesDetails(data.data));
   };
 
   useEffect(() => {

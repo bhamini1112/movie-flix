@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 import Header from "./Header";
 import Filter from "./Filter";
@@ -14,14 +15,8 @@ const HomePage = () => {
   const [activeYear, setActiveYear] = useState(2012);
   const [olderYear, setOlderYear] = useState(2011);
 
-  const fetchGenres = async () => {
-    const data = await fetch(GENRE_LIST);
-    const json = await data.json();
-    setGenres(json.genres);
-  };
-
   useEffect(() => {
-    fetchGenres();
+    axios.get(GENRE_LIST).then((data) => setGenres(data.data.genres));
   }, []);
 
   return (
